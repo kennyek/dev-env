@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+sudo pacman -S --noconfirm zoxide
+
+BASH_CONFIG='eval "$(zoxide init --cmd cd bash)"'
+ZSH_CONFIG='eval "$(zoxide init --cmd cd zsh)"'
+
+grep -qxF "$BASH_CONFIG" ~/.bashrc || echo "$BASH_CONFIG" >>~/.bashrc
+grep -qxF "$ZSH_CONFIG" ~/.zshrc || echo "$ZSH_CONFIG" >>~/.zshrc
