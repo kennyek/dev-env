@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -e
+
+URL="https://go.dev/dl/go1.25.5.linux-amd64.tar.gz"
+TAR="$HOME/Downloads/go.tar.gz"
+
+curl -L "$URL" -o "$TAR"
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf "$TAR"
+rm "$TAR"
+
+NVIM_EXPORT='export PATH="$PATH:/usr/local/go/bin"'
+FISH_EXPORT='set -gx PATH /usr/local/go/bin $PATH'
+
+grep -qxF "$NVIM_EXPORT" ~/.bashrc || echo "$NVIM_EXPORT" >>~/.bashrc
+grep -qxF "$NVIM_EXPORT" ~/.zshrc || echo "$NVIM_EXPORT" >>~/.zshrc
+grep -qxF "$FISH_EXPORT" ~/.config/fish/config.fish || echo "$FISH_EXPORT" >>~/.config/fish/config.fish

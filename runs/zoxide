@@ -3,7 +3,9 @@
 sudo pacman -S --noconfirm zoxide
 
 BASH_CONFIG='eval "$(zoxide init --cmd cd bash)"'
+FISH_CONFIG='zoxide init fish | source'
 ZSH_CONFIG='eval "$(zoxide init --cmd cd zsh)"'
 
 grep -qxF "$BASH_CONFIG" ~/.bashrc || echo "$BASH_CONFIG" >>~/.bashrc
+grep -qxF "$FISH_CONFIG" ~/.config/fish/config.fish || echo "$FISH_CONFIG" >>~/.config/fish/config.fish
 grep -qxF "$ZSH_CONFIG" ~/.zshrc || echo "$ZSH_CONFIG" >>~/.zshrc

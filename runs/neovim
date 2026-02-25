@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 
-curl -LO https://github.com/neovim/neovim/releases/download/v0.11.3/nvim-linux-x86_64.tar.gz
+curl -LO https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-linux-x86_64.tar.gz
 sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 rm nvim-linux-x86_64.tar.gz
 
 NVIM_EXPORT='export PATH="$PATH:/opt/nvim-linux-x86_64/bin"'
+FISH_EXPORT='set -gx PATH /opt/nvim-linux-x86_64/bin $PATH'
+
 grep -qxF "$NVIM_EXPORT" ~/.bashrc || echo "$NVIM_EXPORT" >>~/.bashrc
 grep -qxF "$NVIM_EXPORT" ~/.zshrc || echo "$NVIM_EXPORT" >>~/.zshrc
+grep -qxF "$FISH_EXPORT" ~/.config/fish/config.fish || echo "$FISH_EXPORT" >>~/.config/fish/config.fish
 
 sudo pacman -S --noconfirm cmake fd fzf lazygit ripgrep
 echo y | yay -S ttf-firacode-nerd
@@ -18,4 +21,4 @@ rm -rf ~/.local/share/nvim
 rm -rf ~/.local/state/nvim
 rm -rf ~/.cache/nvim
 
-git clone https://github.com/kennyek/lazyvim.nvim ~/.config/nvim
+git clone https://github.com/kennyek/config.nvim ~/.config/nvim
