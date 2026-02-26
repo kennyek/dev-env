@@ -2,7 +2,7 @@
 
 set -e
 
-URL="https://go.dev/dl/go1.25.5.linux-amd64.tar.gz"
+URL="https://go.dev/dl/go1.26.0.linux-amd64.tar.gz"
 TAR="$HOME/Downloads/go.tar.gz"
 
 curl -L "$URL" -o "$TAR"
