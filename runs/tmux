@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+yes | yay -S tmux tpack-bin
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+CONF_DIR=~/.config/tmux
+
+mkdir -p "$CONF_DIR"
+cp "$SCRIPT_DIR/../configs/tmux.conf" "$CONF_DIR/tmux.conf"
+
